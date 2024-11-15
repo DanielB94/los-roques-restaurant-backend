@@ -23,7 +23,7 @@ const adminApi = require('./routes/adminApi');
 const app = express();
 
 /// GLOBAL OBJECT TO PASSPORT TOKEN CONFIG ///
-require('./config/passport')(passport);
+//require('./config/passport')(passport);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
