@@ -1,4 +1,4 @@
-const fs = require('fs');
+/*const fs = require('fs');
 const path = require('path');
 
 const passport = require('passport');
@@ -67,4 +67,4 @@ const requireAuth = (req, res, next) => {
 
 module.exports.issueJWT = issueJWT;
 module.exports.issuePasswordJWT = issuePasswordJWT;
-module.exports.requireAuth = requireAuth;
+module.exports.requireAuth = requireAuth; */

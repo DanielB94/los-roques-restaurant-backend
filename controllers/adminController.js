@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const { body, validationResult } = require("express-validator");
 const Admin = require('../models/adminModel');
-const auth = require('../config/auth');
+//const auth = require('../config/auth');
 
 // --- USER CREATE --- //
 exports.user_create_post = [
@@ -83,7 +83,7 @@ exports.user_create_post = [
           gender: req.body.gender,
         }).save()
           .then((user) => {
-            const jwt =auth.issueJWT(user);
+            //const jwt =auth.issueJWT(user);
             res.cookie('token', jwt);
             res.status(200).json({ success: true, token: jwt.token, expiresIn: jwt.expiresIn, info: user});
           })
