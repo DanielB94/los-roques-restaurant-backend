@@ -8,7 +8,6 @@ const JwtStrategy = passportJwt.Strategy;
 const ExtractJwt = passportJwt.ExtractJwt;
 
 const PUB_KEY = process.env.PUBLIC_KEY;
-console.log(PUB_KEY);
 
 const options = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
