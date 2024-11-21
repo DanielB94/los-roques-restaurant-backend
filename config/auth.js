@@ -7,9 +7,7 @@ const jwt = require('jsonwebtoken');
 
 require('./passport');
 
-const pathToKey = path.join(__dirname, '..', 'id_rsa_priv.pem');
 const PRIV_KEY = process.env.PRIVATE_KEY;
-console.log(PRIV_KEY)
 
 function issueJWT(user) {
   const _id = user._id;
