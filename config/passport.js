@@ -1,4 +1,4 @@
-/*const fs = require('fs');
+const fs = require('fs');
 const path = require('path');
 const passportJwt = require('passport-jwt');
 const Admin = require('../models/adminModel');
@@ -28,4 +28,4 @@ const strategy = new JwtStrategy(options, (payload, done) => {
 });
 module.exports = (passport) => {
   passport.use(strategy);
-};*/
+};

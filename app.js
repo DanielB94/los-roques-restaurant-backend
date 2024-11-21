@@ -23,7 +23,7 @@ const adminApi = require('./routes/adminApi');
 const app = express();
 
 /// GLOBAL OBJECT TO PASSPORT TOKEN CONFIG ///
-//require('./config/passport')(passport);
+require('./config/passport')(passport);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -68,7 +68,7 @@ app.use('/users', usersRouter);
 
 // CORS Config
 app.use(cors({
-  origin: ["http://localhost:3000","https://danielb94.github.io"],
+  origin: ["http://localhost:3000","https://danielb94.github.io", "https://www.losroquesrestaurant.com"],
   credentials: true
 }));
 
