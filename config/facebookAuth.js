@@ -5,7 +5,7 @@ const FacebookStrategy = require('passport-facebook').Strategy;
 passport.use(new FacebookStrategy({
     clientID: process.env.FACE_ID,
     clientSecret: process.env.FACE_SECRET,
-    callbackURL: `${process.env.BACKEND_HOST}api/auth/facebook/callback`,
+    callbackURL: `${process.env.BACKEND_HOST}/api/auth/facebook/callback`,
     profileFields: ['id', 'displayName', 'photos', 'email']
 },
     function (accessToken, refreshToken, profile, cb) {
