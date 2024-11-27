@@ -24,8 +24,8 @@ router.get('/auth/google',
 
 router.get('/auth/callback',
   passport.authenticate('google', {
-    successRedirect: `http://localhost:3000/rewards`,
-    failureRedirect: `http://localhost:300/unauthorized`}));
+    successRedirect: `${process.env.FRONTEND_HOST}rewards`,
+    failureRedirect: `${process.env.FRONTEND_HOST}unauthorized`}));
 
 /// FACEBOOK STRATEGY ///
 
