@@ -24,8 +24,8 @@ router.get('/auth/google',
 
 router.get('/auth/callback',
   passport.authenticate('google', {
-    successRedirect: `${process.env.FRONTEND_HOST}rewards`,
-    failureRedirect: `${process.env.FRONTEND_HOST}unauthorized`}));
+    successRedirect: `http://localhost:3000/rewards`,
+    failureRedirect: `http://localhost:300/unauthorized`}));
 
 /// FACEBOOK STRATEGY ///
 
@@ -56,6 +56,13 @@ router.get('/auth/facebook/callback',
       res.status(200).json({success: true});
     });
 })
+
+/// STRIPE CONFIG ///
+router.get('/stripeConfig', (req, res) => {
+  res.send({
+    publishableKEY: process.env.STRIPE_PUBLISHABLE_KEY
+  });
+});
 
 /// USER ROUTES ///
 
