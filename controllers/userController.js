@@ -117,7 +117,7 @@ exports.user_update_phone_post = (req, res, next) => {
     // otherwise, store Phone in DB
     User.findByIdAndUpdate(req.body.user_id, {phone: req.body.phone}, {new: true})
       .then((theuser) => {
-        res.status(200).json({succeed: true, user: theuser});
+        res.status(200).json({succeed: true, info: theuser});
         console.log(theuser, 'theuser');
       })
       .catch((err) => res.json({err: err}));
