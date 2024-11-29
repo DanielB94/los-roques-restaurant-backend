@@ -41,7 +41,7 @@ router.get('/auth/facebook/callback',
   
   router.get('/login/success', (req, res) => {
     if (req.isAuthenticated) {
-      let user = User.findById(req_user._id)
+      let user = User.findById(req.user._id)
     res.status(200).json({
       info: user
     })  
