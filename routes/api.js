@@ -41,10 +41,10 @@ router.get('/auth/facebook/callback',
   
   router.get('/login/success', async (req, res) => {
     if (req.isAuthenticated) {
-      console.log(req.user);
+      let user = await User.findById(req.user._id);
     res.status(200).json({
-      info: req.user
-    })
+      info: user
+    })  
   } else {
     res.status(401).redirect(`${process.env.FRONTEND_HOST}login`);
   }
