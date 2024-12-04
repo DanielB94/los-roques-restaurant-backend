@@ -68,7 +68,7 @@ app.use('/users', usersRouter);
 
 // CORS Config
 app.use(cors({
-  origin: ["http://localhost:3000","https://danielb94.github.io", "https://www.losroquesrestaurant.com"],
+  origin: ["http://localhost:3000","https://danielb94.github.io", "https://www.losroquesrestaurant.com", 'https://api.losroquesrestaurant.com'],
   credentials: true
 }));
 
