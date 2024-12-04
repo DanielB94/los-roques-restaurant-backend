@@ -34,7 +34,7 @@ const Stripe = require('stripe');
 const stripe = new Stripe(process.env.STRIPE_PRIVATE_KEY);
 
 // Match the raw body to content type application/json
-const endpointSecret = 'whsec_6a833f95cc61fa1b4ae5a67303a669525b74e8ac668ab1c553905fcc29ec2124'
+const endpointSecret = process.env.STRIPE_ENDPOINT_SECRET;
 
 app.post('/webhook', bodyParser.raw({type: 'application/json'}), async (request, response) => {
   const payload = request.body;
