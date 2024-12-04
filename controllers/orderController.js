@@ -58,8 +58,7 @@ exports.order_create_post = async (req,res,next) => {
         discounts: [{
           coupon: coupon.id,
         },],
-        success_url: `${process.env.FRONTEND_HOST}order/success?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${process.env.FRONTEND_HOST}failed`,
+        return_url: `${process.env.FRONTEND_HOST}order/success?session_id={CHECKOUT_SESSION_ID}`
       });
       console.log('from discount');
         res.send({clientSecret: session.client_secret});
@@ -81,7 +80,6 @@ exports.order_create_post = async (req,res,next) => {
             quantity: item.quantity
           }
         }),
-        success_url: `${process.env.FRONTEND_HOST}order/success?session_id={CHECKOUT_SESSION_ID}`,
         return_url: `${process.env.FRONTEND_HOST}order/success?session_id={CHECKOUT_SESSION_ID}`,
         
       });
