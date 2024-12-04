@@ -81,6 +81,7 @@ exports.order_create_post = async (req,res,next) => {
             quantity: item.quantity
           }
         }),
+        success_url: `${process.env.FRONTEND_HOST}order/success?session_id={CHECKOUT_SESSION_ID}`,
         return_url: `${process.env.FRONTEND_HOST}order/success?session_id={CHECKOUT_SESSION_ID}`,
         
       });
