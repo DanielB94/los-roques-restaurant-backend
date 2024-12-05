@@ -61,7 +61,6 @@ exports.order_create_post = async (req,res,next) => {
         return_url: `${process.env.FRONTEND_HOST}order/success?session_id={CHECKOUT_SESSION_ID}`
       });
       console.log('from discount');
-        res.send({clientSecret: session.client_secret});
     } else {
       session = await stripe.checkout.sessions.create({
         mode: 'payment',
