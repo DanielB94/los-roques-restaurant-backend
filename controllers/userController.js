@@ -109,7 +109,26 @@ exports.reset_password_post = (req, res, next) => {
 }
 
 // --- PHONE USER UPDATE --- //
-exports.user_update_phone_post = (req, res, next) => {
+exports.user_update_phone_post = [
+  body('phone')
+    .trim()
+    .isLength({ min: 10, max: 10 })
+    .escape()
+    .withMessage('Phone number must be 10 characters long'),
+
+    // Process request after validation and sanitization.
+  (req, res, next) => {
+
+    // Extract the validation error from a request.
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      // There are errors. Render form again with sanitized values/errors messages.
+      res.json({
+        user: req.body,
+        errors: errors.array(),
+      });
+      return;
+    }// Data from Form is valid.
 
   if (req.isAuthenticated) {
     console.log(req.body);
@@ -126,4 +145,5 @@ exports.user_update_phone_post = (req, res, next) => {
   }
       
   }
+]
 /// 113030626382697314778 ///
