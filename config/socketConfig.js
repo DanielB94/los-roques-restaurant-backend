@@ -32,7 +32,7 @@ function initializeSocket(server) {
             console.log('Something has changed');
             console.log(change.documentKey._id);
             const order = await Order.find({status: false});
-            if(order.paid !== false || order.status !== false) {
+            if(order.paid !== false || order.status === false) {
             io.to('AdminRoom').emit('changes', order);
             }
           });
