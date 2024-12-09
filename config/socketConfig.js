@@ -31,7 +31,8 @@ function initializeSocket(server) {
           Order.watch().on('change', async (change)=>{
             console.log('Something has changed');
             console.log(change.documentKey._id);
-            const order = await Order.findById(change.documentKey._id);
+            const order = await Order.find({status: false});
+            console.log(order);
             if(order.paid !== false || order.status !== false) {
             io.to('AdminRoom').emit('changes', order);
             }
