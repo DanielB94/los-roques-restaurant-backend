@@ -34,8 +34,10 @@ function initializeSocket(server) {
             const orders = await Order.find({status: false});
             console.log(orders);
             orders.map(order => {
-              if(order.paid !== false) {
-              io.to('AdminRoom').emit('changes', orders);
+              if(order.paid === true) {
+                io.to('AdminRoom').emit('changes', orders);
+              } else {
+                return null;
               }
             })
           });
