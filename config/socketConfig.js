@@ -35,7 +35,7 @@ function initializeSocket(server) {
             console.log(orders);
             orders.map(order => {
               if(order.paid !== false) {
-              io.to('AdminRoom').emit('changes', order);
+              io.to('AdminRoom').emit('changes', orders);
               }
             })
           });
