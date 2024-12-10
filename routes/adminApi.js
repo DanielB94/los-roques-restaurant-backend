@@ -64,4 +64,6 @@ router.post('/delete-order/:id', authorization, orderController.order_delete_ord
 
 router.get('/order/success', authorization, orderController.order_get_orders_get);
 
+router.get('/order-status', authorization, orderController.order_get_orders);
+
 module.exports = router;
