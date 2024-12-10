@@ -244,7 +244,7 @@ exports.order_get_details = (req, res) => {
 }
 
 exports.order_get_orders = (req, res) => {
-  Order.find({status: false, paid: true})
+  Order.find({status: false})
   .then(result => console.log(result), res.status(200).json({result: result}))
   .catch(err => res.status(500).json({message: 'Something is wrong in the server'}))
 }
