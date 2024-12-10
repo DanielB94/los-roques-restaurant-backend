@@ -190,7 +190,7 @@ exports.order_fulfillCheckout_post = async (sessionId) => {
       }
 
 exports.order_get_orders_get = (req, res, next) => {
-    Order.find({status: false})
+    Order.find({status: false, paid: true})
     .then(result => res.status(200).json(result))
     .catch(err => console.log(err));
 }
