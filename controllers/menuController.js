@@ -12,10 +12,10 @@ exports.item_create_post = [
     body('price')
         .trim()
         .escape(),
-    body('category')
+    body('priceInCents')
         .trim()
         .escape(),
-    body('picture')
+    body('category')
         .trim()
         .escape(),
     body('reward')
@@ -30,8 +30,8 @@ exports.item_create_post = [
             name: req.body.name,
             description: req.body.description,
             price: req.body.price,
+            priceInCents: req.body.priceInCents,
             category: req.body.category,
-            picture: req.body.picture,
             reward: req.body.reward
         }).save()
         .then(() => {
