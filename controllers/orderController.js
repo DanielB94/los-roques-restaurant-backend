@@ -17,7 +17,7 @@ exports.order_create_post = async (req,res,next) => {
   try {
 
 /// IF USER IS AUTHENTICATED PROCEED WITH OPERATION ///
-    if (req.isAuthenticated) {
+    if (req.isAuthenticated()) {
 
     let session;
     let maxReward;
@@ -232,7 +232,7 @@ exports.order_delete_order_post = () => {
 }
 
 exports.order_get_details = (req, res) => {
-  if (req.isAuthenticated) {
+  if (req.isAuthenticated()) {
     Order.findById(req.params.id)
     .then(result => {
       res.status(200).json({result: result});

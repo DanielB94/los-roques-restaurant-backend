@@ -79,7 +79,7 @@ app.use(session({
   saveUninitialized: true,
   store: MongoStore.create({mongoUrl: process.env.MONGODB_KEY
     , collectionName: 'sessions'}),
-    cookie: { maxAge: 1000 * 60 * 24 * 24, secure : false, httpOnly: true}
+    cookie: { maxAge:  15 * 24 * 60 * 60 * 1000, secure : false, httpOnly: true}
   }));
   
   require('./config/googleAuth');
