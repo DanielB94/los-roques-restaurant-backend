@@ -42,13 +42,15 @@ router.get('/auth/facebook/callback',
   router.get('/login/success', (req, res) => {
     try {
       if (req.isAuthenticated) {
-        res.status(200).json({
-          info: req.user
-        })  
-      }
-    } catch(err) {
+      res.status(200).json({
+        info: req.user
+      })  
+    } else {
       res.status(401).json({message: 'Not authorized'});
-  }
+    }
+    } catch(err) {
+      console.log(err)
+    }
   });
 
 /// LOGOUT SESSION ///
