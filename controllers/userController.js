@@ -9,11 +9,11 @@ const sendEmail = require('./utils/email');
       User.findById(req.user._id)
       .then((result) => {
         res.status(200).json({ user: result, errors: [] });
-    })
-    .catch((err) => next(err));
-  } else {
-      res.status(401).json({success: false, message: 'Inicia sesion'})
-  }
+      })
+      .catch((err) => console.log('error'));
+    } else {
+        res.status(401).json({success: false, message: 'Inicia sesion'})
+    };
   };
 
   exports.user_profile_update = () => {
