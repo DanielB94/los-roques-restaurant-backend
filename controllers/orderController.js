@@ -16,7 +16,7 @@ exports.order_create_post = async (req,res,next) => {
 
   try {
 
-/// IF USER IS AUTHENTICATED PROCeED WITH OPERATION ///
+/// IF USER IS AUTHENTICATED PROCEED WITH OPERATION ///
     if (req.isAuthenticated) {
 
     let session;

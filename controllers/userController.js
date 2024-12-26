@@ -5,7 +5,7 @@ const auth = require('../config/auth');
 const sendEmail = require('./utils/email');
 
   exports.user_profile_get = (req, res, next) => {
-    if (req.isAuthenticated) {
+    if (req.isAuthenticated()) {
       User.findById(req.user._id)
       .then((result) => {
         res.status(200).json({ user: result, errors: [] });
