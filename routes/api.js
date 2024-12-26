@@ -40,12 +40,14 @@ router.get('/auth/facebook/callback',
 /// SUCCEESS ROUTE ///
   
   router.get('/login/success', (req, res) => {
-    if (req.isAuthenticated) {
-    res.status(200).json({
-      info: req.user
-    })  
-  } else {
-    res.status(401).json({message: 'Not authorized'});
+    try {
+      if (req.isAuthenticated) {
+        res.status(200).json({
+          info: req.user
+        })  
+      }
+    } catch(err) {
+      res.status(401).json({message: 'Not authorized'});
   }
   });
 
