@@ -45,7 +45,7 @@ router.get('/auth/facebook/callback',
       info: req.user
     })  
   } else {
-    res.status(401).redirect(`${process.env.FRONTEND_HOST}login`);
+    res.status(401).json({message: 'Not authorized'});
   }
   });
 
