@@ -2,6 +2,7 @@ const User = require('../models/userModel');
 const Order = require('../models/ordersModel');
 const MenuItem = require('../models/menuModel');
 const { initializeSocket, io } = require('../config/socketConfig');
+const { Client } = require('@googlemaps/google-maps-services-js');
 
 const twilio = require('twilio');
 const Stripe = require('stripe');
@@ -247,4 +248,19 @@ exports.order_get_orders = (req, res) => {
   Order.find({status: false})
   .then(result => console.log(result), res.status(200).json({result: result}))
   .catch(err => res.status(500).json({message: 'Something is wrong in the server'}))
+}
+
+
+exports.get_delivery_price = (req, res) => {
+  const google_client = new Client({});
+  google_client.directions({
+    params: {
+      origin: '3621 frankfor rd dallas tx',
+      destination: '6009 w parker rd plano',
+      mode: 'driving',
+      key: process.env.GOOGLE_API
+    }
+  })
+  .then(result => console.log(result.data.routes.map(r => r.legs.map(r => r.distance))))
+  .catch(err => console.log(err));
 }
