@@ -103,6 +103,6 @@ router.get('/order/success', async (req, res) => {
   
 });
 
-router.get('/delivery', orderController.get_delivery_price);
+router.post('/delivery', orderController.post_delivery_price);
 
 module.exports = router;

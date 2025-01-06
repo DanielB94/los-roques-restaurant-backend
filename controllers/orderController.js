@@ -108,7 +108,9 @@ exports.order_create_post = async (req,res,next) => {
         totalProducts: req.body.totalProducts,
         totalTaxes: req.body.totalTaxes,
         total: req.body.total,
-        cart_rewards: req.body.cart_rewards
+        cart_rewards: req.body.cart_rewards,
+        deliveryTotal: req.body.deliveryTotal,
+        rewards_used: req.body.user_rewards
       })
       
       order.save();
@@ -251,16 +253,21 @@ exports.order_get_orders = (req, res) => {
 }
 
 
-exports.get_delivery_price = (req, res) => {
+exports.post_delivery_price = (req, res) => {
+  console.log(req.body);
   const google_client = new Client({});
   google_client.directions({
     params: {
-      origin: '3621 frankfor rd dallas tx',
-      destination: '6009 w parker rd plano',
+      origin: process.env.ADDRESS,
+      destination: req.body.destination,
       mode: 'driving',
       key: process.env.GOOGLE_API
     }
   })
-  .then(result => console.log(result.data.routes.map(r => r.legs.map(r => r.distance))))
+  .then((result) => {
+
+    let distance = result.data.routes.map(r => r.legs.map(r => r.distance));
+    res.json({distance: distance});
+  })
   .catch(err => console.log(err));
 }

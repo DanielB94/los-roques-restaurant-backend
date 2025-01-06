@@ -17,10 +17,12 @@ const orderSchema = new Schema({
     totalProducts: Number,
     totalTaxes: Number,
     total: Number,
+    deliveryTotal: Number,
+    rewards_used: Number,
     cart_rewards: {
         type: Number,
         max: 20
-    }
+    },
 }, { timestamps: true })
 
 const Order = mongoose.model('Order', orderSchema);
