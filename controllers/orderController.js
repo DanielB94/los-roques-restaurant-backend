@@ -1,6 +1,7 @@
 const User = require('../models/userModel');
 const Order = require('../models/ordersModel');
 const MenuItem = require('../models/menuModel');
+const { body, validationResult } = require("express-validator");
 const { initializeSocket, io } = require('../config/socketConfig');
 const { Client } = require('@googlemaps/google-maps-services-js');
 
@@ -253,8 +254,26 @@ exports.order_get_orders = (req, res) => {
 }
 
 
-exports.post_delivery_price = (req, res) => {
-  console.log(req.body);
+exports.post_delivery_price = [
+  // validate and sanitize data.
+  body('destination')
+  .trim()
+  .escape(),
+  
+  // Process request after validation and sanitization.
+  (req, res, next) => {
+    // Extract the validation error from a request.
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      // There are errors. Render form again with sanitized values/errors messages.
+      res.json({
+        user: req.body,
+        errors: errors.array(),
+      });
+      return;
+    }// Data from Form is valid.
+    
+    console.log(req.body);
   const google_client = new Client({});
   google_client.directions({
     params: {
@@ -270,4 +289,5 @@ exports.post_delivery_price = (req, res) => {
     res.json({distance: distance});
   })
   .catch(err => console.log(err));
-}
+},
+]
