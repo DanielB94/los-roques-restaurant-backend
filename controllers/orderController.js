@@ -173,9 +173,9 @@ exports.order_fulfillCheckout_post = async (sessionId) => {
 
                 PD:  Para retirar el pedido debemos verificar el id de la orden.`,
             
-                from: "+18556174449",
+                from: process.env.TWILIO_PHONE_NUMBER,
             
-                to: "+18777804236",
+                to: '+' + user.phone,
             
               });
             
