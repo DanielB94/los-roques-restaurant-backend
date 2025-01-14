@@ -175,7 +175,7 @@ exports.order_fulfillCheckout_post = async (sessionId) => {
             
                 from: process.env.TWILIO_PHONE_NUMBER,
             
-                to: `+${user.phone}`,
+                to: `+1${user.phone}`,
             
               });
             
