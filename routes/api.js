@@ -28,7 +28,6 @@ router.get('/auth/callback',
     failureRedirect: `${process.env.FRONTEND_HOST}unauthorized`}));
 
 /// FACEBOOK STRATEGY ///
-
   router.get('/auth/facebook',
     passport.authenticate('facebook'));
 

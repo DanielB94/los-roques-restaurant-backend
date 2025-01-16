@@ -7,7 +7,7 @@ const menuItemSchema = new Schema({
     price: Number,
     priceInCents: Number,
     category: String,
-    picture: { data: Buffer, contentType: String },
+    picture: String ,
     reward: Number,
     available: Boolean,
 });
